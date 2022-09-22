@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		22B1CF0228DCC1A600AD75F0 /* IP04.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IP04.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		22B1CF0228DCC1A600AD75F0 /* IP04_Magic8Ball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IP04_Magic8Ball.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22B1CF0528DCC1A600AD75F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22B1CF0728DCC1A600AD75F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		22B1CF0928DCC1A600AD75F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,7 +48,7 @@
 		22B1CF0328DCC1A600AD75F0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				22B1CF0228DCC1A600AD75F0 /* IP04.app */,
+				22B1CF0228DCC1A600AD75F0 /* IP04_Magic8Ball.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,9 +70,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		22B1CF0128DCC1A600AD75F0 /* IP04 */ = {
+		22B1CF0128DCC1A600AD75F0 /* IP04_Magic8Ball */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 22B1CF1628DCC1A700AD75F0 /* Build configuration list for PBXNativeTarget "IP04" */;
+			buildConfigurationList = 22B1CF1628DCC1A700AD75F0 /* Build configuration list for PBXNativeTarget "IP04_Magic8Ball" */;
 			buildPhases = (
 				22B1CEFE28DCC1A600AD75F0 /* Sources */,
 				22B1CEFF28DCC1A600AD75F0 /* Frameworks */,
@@ -82,9 +82,9 @@
 			);
 			dependencies = (
 			);
-			name = IP04;
+			name = IP04_Magic8Ball;
 			productName = IP04;
-			productReference = 22B1CF0228DCC1A600AD75F0 /* IP04.app */;
+			productReference = 22B1CF0228DCC1A600AD75F0 /* IP04_Magic8Ball.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +102,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 22B1CEFD28DCC1A600AD75F0 /* Build configuration list for PBXProject "IP04" */;
+			buildConfigurationList = 22B1CEFD28DCC1A600AD75F0 /* Build configuration list for PBXProject "IP04_Magic8Ball" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +115,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				22B1CF0128DCC1A600AD75F0 /* IP04 */,
+				22B1CF0128DCC1A600AD75F0 /* IP04_Magic8Ball */,
 			);
 		};
 /* End PBXProject section */
@@ -337,7 +337,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		22B1CEFD28DCC1A600AD75F0 /* Build configuration list for PBXProject "IP04" */ = {
+		22B1CEFD28DCC1A600AD75F0 /* Build configuration list for PBXProject "IP04_Magic8Ball" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				22B1CF1428DCC1A700AD75F0 /* Debug */,
@@ -346,7 +346,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		22B1CF1628DCC1A700AD75F0 /* Build configuration list for PBXNativeTarget "IP04" */ = {
+		22B1CF1628DCC1A700AD75F0 /* Build configuration list for PBXNativeTarget "IP04_Magic8Ball" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				22B1CF1728DCC1A700AD75F0 /* Debug */,
