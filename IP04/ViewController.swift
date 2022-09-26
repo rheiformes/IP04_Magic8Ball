@@ -27,8 +27,11 @@ class ViewController: UIViewController {
     var answerLbl = UILabel()
         
     let questionText:String = "Think of your question...shake the magic 8 ball when ready"
-    var answerText:String = ""
+    var answerText:String = "???"
    
+    //TODO: add a timer functionality so after 5 sec, disapear
+    
+    
     //label for 8 ball 'circle'
     var ballLbl = UILabel()
     
