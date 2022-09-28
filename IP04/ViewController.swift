@@ -7,8 +7,13 @@
 
 import UIKit
 
+
+
 class ViewController: UIViewController {
 
+    
+    
+    
     //screen values
     var screenWidth: Int = 0
     var screenHeight: Int = 0
@@ -22,15 +27,29 @@ class ViewController: UIViewController {
     var biasIncButton = UIButton()
     var biasDecButton = UIButton()
     
+    var posResponses = 0.0
+    var neutralResponses = 0.0
+    var negResponses = 0.0
+    
+    var posBarLbl = UILabel()
+    var neutralBarLbl = UILabel()
+    var negBarLbl = UILabel()
+    
+    
+    
     //label/text for the screen
     var promptLbl = UILabel()
     var answerLbl = UILabel()
         
     let questionText:String = "Think of your question...shake the magic 8 ball when ready"
     var answerText:String = "???"
-   
-    //TODO: add a timer functionality so after 5 sec, disapear
     
+    
+   
+    //adding a timer
+    var timer = Timer()
+    var secVisible: Double = 0
+    let visibleDuration: Double = 5 //seconds
     
     //label for 8 ball 'circle'
     var ballLbl = UILabel()
@@ -106,6 +125,19 @@ class ViewController: UIViewController {
         biasDecButton.addTarget(self, action: #selector(decBias), for: .touchUpInside)
         view.addSubview(biasDecButton)
         
+        //creating a stacked bar chart for checking the ratios of responses
+        posBarLbl.frame = CGRect(x: xBuffer, y: Int(promptLbl.frame.maxY), width: Int(posResponses), height: 10)
+        posBarLbl.backgroundColor = UIColor.systemGreen
+        neutralBarLbl.frame = CGRect(x: Int(posBarLbl.frame.maxX), y: Int(posBarLbl.frame.maxY), width: Int(neutralResponses), height: 10)
+        neutralBarLbl.backgroundColor = UIColor.systemBlue
+        negBarLbl.frame = CGRect(x: Int(neutralBarLbl.frame.maxX), y: Int(posBarLbl.frame.maxY), width: Int(negResponses), height: 10)
+        negBarLbl.backgroundColor = UIColor.systemRed
+        view.addSubview(posBarLbl)
+        view.addSubview(neutralBarLbl)
+        view.addSubview(negBarLbl)
+        
+        
+        
         self.view = view
         
     }
@@ -138,9 +170,7 @@ class ViewController: UIViewController {
     //adding shake function for hardware
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
-            answerText = shake()
-            shakeAnimation()
-            updateUI()
+            shake()
         }
     }
 
@@ -148,12 +178,52 @@ class ViewController: UIViewController {
     func updateUI() {
         answerLbl.text = answerText
         biasLbl.text = "Do you believe destiny is in your own hands? Bias: \(bias)"
+        posBarLbl.frame = CGRect(x: posBarLbl.frame.minX, y: posBarLbl.frame.minY, width: CGFloat(5*posResponses), height: posBarLbl.frame.height)
+        neutralBarLbl.frame = CGRect(x: posBarLbl.frame.maxX, y: posBarLbl.frame.minY, width: CGFloat(5*neutralResponses), height: posBarLbl.frame.height)
+        negBarLbl.frame = CGRect(x: neutralBarLbl.frame.maxX, y: posBarLbl.frame.minY, width: CGFloat(5*negResponses), height: posBarLbl.frame.height)
     }
     
     //allow to get answer randomly
-    func shake() -> String {
+    func shake(){
+        reset8Ball()
         setAnswers()
-        return questionAnswers[ Int.random(in: 0...questionAnswers.count-1) ]
+        answerText = questionAnswers[ Int.random(in: 0...questionAnswers.count-1) ]
+        
+        if(positive.contains(answerText)) {posResponses+=1}
+        else if (negative.contains(answerText)) {negResponses += 1}
+        else if (noncommital.contains(answerText)) {neutralResponses += 1}
+        
+        shakeAnimation()
+        updateUI()
+        secVisible = 0
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(timerFunc), userInfo: nil, repeats: true)
+    }
+    
+    //helper method for timer
+    func stillHaveTime() -> Bool {
+        return (secVisible <= visibleDuration)
+    }
+    
+    
+    @objc func timerFunc() {
+        //if there is still time left for that response
+        if (stillHaveTime()) {
+            //update time label
+            
+            secVisible += 0.1
+        }
+        //if there isn't time left, reset to ???
+        else {
+            reset8Ball()
+            
+        }
+    }
+    
+    //reseting when time runs out
+    func reset8Ball() {
+        timer.invalidate()
+        answerText = "???"
+        updateUI()
     }
     
     //weights the answers allowed according to bias level
@@ -180,5 +250,7 @@ class ViewController: UIViewController {
         return tempArray
     }
 
+    
 }
+
 
